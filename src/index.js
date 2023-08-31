@@ -1,4 +1,9 @@
+import dotenv from "dotenv";
+import roteadorUsuario from "./routes/usuario.js";
 import express from "express";      
+
+dotenv.config();
+
 const app = express();              
 const port = 3000;  
 //index.js
@@ -16,10 +21,10 @@ app.listen(port, () => {
   console.log(`Serviço escutando na porta:  ${port}`);
 });
 //index.js
-import dotenv from "dotenv";
 
-dotenv.config();
-import roteadorUsuario from "./routes/usuario.js";
+
+
+
 
 
 
