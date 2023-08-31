@@ -1,21 +1,4 @@
-import express from "express";      // Requisição do pacote do express
-const app = express();              // Instancia o Express
-const port = 3000;                  // Define a porta
 
-app.get("/", (req, res) => {        // Cria a rota da raiz do projeto
-  res.json({
-    nome: "Stefanny Corsino",      // Substitua pelo seu nome
-  });
-  console.log("Rota / solicitada");
-});
-
-app.listen(port, () => {            // Um socket para "escutar" as requisições
-  console.log(`Serviço escutando na porta:  ${port}`);
-});
-//index.js
-import dotenv from "dotenv";
-
-dotenv.config();
 import { selectUsuarios, selectUsuario, insertUsuario, deleteUsuario, updateUsuario  } from "./bd.js";
 app.get("/usuarios", async (req, res) => {
   console.log("Rota GET/usuarios solicitada");
@@ -28,7 +11,7 @@ app.get("/usuarios", async (req, res) => {
 });
 
 //index.js
-app.get("/usuario/:id", async (req, res) => {
+router.get("/usuario/:id", async (req, res) => {
   console.log("Rota GET /usuario solicitada");
   try {
     const usuario = await selectUsuario(req.params.id);
@@ -41,7 +24,7 @@ app.get("/usuario/:id", async (req, res) => {
 //index.js
 app.use(express.json());
 //index.js
-app.post("/usuario", async (req, res) => {
+router.post("/usuario", async (req, res) => {
   console.log("Rota POST /usuario solicitada");
   try {
     await insertUsuario(req.body);
@@ -52,7 +35,7 @@ app.post("/usuario", async (req, res) => {
 
 });
 //index.js
-app.delete("/usuario/:id", async (req, res) => {
+router.delete("/usuario/:id", async (req, res) => {
   console.log("Rota DELETE /usuario solicitada");
   try {
     const usuario = await selectUsuario(req.params.id);
@@ -65,7 +48,7 @@ app.delete("/usuario/:id", async (req, res) => {
   }
 });
 //index.js
-app.patch("/usuario", async (req, res) => {
+router.patch("/usuario", async (req, res) => {
   console.log("Rota PATCH /usuario solicitada");
   try {
     const usuario = await selectUsuario(req.body.id);
@@ -78,3 +61,17 @@ app.patch("/usuario", async (req, res) => {
     res.status(error.status || 500).json({ message: error.message || "Erro!" });
   }
 });
+import { Router } from "express";
+//src/routes/usuario.js
+const router = Router();
+
+router.get("/usuario", async (req, res) => {
+  console.log(`Rota GET /usuarios solicitada pelo usuario ${req.userId}`);
+  try {
+    const usuarios = await selectUsuarios();
+    res.json(usuarios);
+  } catch (error) {
+    res.status(error.status || 500).json({ message: error.message || "Erro!" });
+  }
+});
+export default router;
