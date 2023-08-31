@@ -1,6 +1,6 @@
 
 import { selectUsuarios, selectUsuario, insertUsuario, deleteUsuario, updateUsuario  } from "./bd.js";
-app.get("/usuarios", async (req, res) => {
+router.get("/usuarios", async (req, res) => {
   console.log("Rota GET/usuarios solicitada");
   try {
     const usuarios = await selectUsuarios();
