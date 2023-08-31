@@ -2,7 +2,8 @@ import express from "express";
 const app = express();              
 const port = 3000;  
 //index.js
-app.use(express.json());                
+app.use(express.json()); 
+app.use(roteadorUsuario);               
 
 app.get("/", (req, res) => {        
   res.json({
@@ -22,4 +23,3 @@ import roteadorUsuario from "./routes/usuario.js";
 
 
 
-app.use(roteadorUsuario);
