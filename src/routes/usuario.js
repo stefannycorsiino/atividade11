@@ -1,8 +1,7 @@
 
 import { selectUsuarios, selectUsuario, insertUsuario, deleteUsuario, updateUsuario  } from "./db/bd.js";
-const router = Router();
 
-router.get("/usuarios", async (req, res) => {
+router.get("/usuario", async (req, res) => {
   console.log("Rota GET/usuarios solicitada");
   try {
     const usuarios = await selectUsuarios();
