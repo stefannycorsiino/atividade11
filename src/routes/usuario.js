@@ -1,5 +1,7 @@
 
-import { selectUsuarios, selectUsuario, insertUsuario, deleteUsuario, updateUsuario  } from "./bd.js";
+import { selectUsuarios, selectUsuario, insertUsuario, deleteUsuario, updateUsuario  } from "./db/bd.js";
+const router = Router();
+
 router.get("/usuarios", async (req, res) => {
   console.log("Rota GET/usuarios solicitada");
   try {
