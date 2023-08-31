@@ -2,7 +2,7 @@
 import { selectUsuarios, selectUsuario, insertUsuario, deleteUsuario, updateUsuario  } from "../db/index.js";
 
 router.get("/usuario", async (req, res) => {
-  console.log("Rota GET/usuarios solicitada");
+  console.log(`Rota GET /usuarios solicitada pelo usuario ${req.userId}`);
   try {
     const usuarios = await selectUsuarios();
     res.json(usuarios);
