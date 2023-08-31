@@ -1,5 +1,5 @@
 
-import { selectUsuarios, selectUsuario, insertUsuario, deleteUsuario, updateUsuario  } from "./db/bd.js";
+import { selectUsuarios, selectUsuario, insertUsuario, deleteUsuario, updateUsuario  } from "../db/index.js";
 
 router.get("/usuario", async (req, res) => {
   console.log("Rota GET/usuarios solicitada");
@@ -22,8 +22,7 @@ router.get("/usuario/:id", async (req, res) => {
     res.status(error.status || 500).json({ message: error.message || "Erro!" });
   }
 });
-//index.js
-app.use(express.json());
+
 //index.js
 router.post("/usuario", async (req, res) => {
   console.log("Rota POST /usuario solicitada");
